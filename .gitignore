@@ -1,0 +1,63 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Data (large files)
+data/raw/
+data/corpus/
+data/indexes/
+data/processed/
+data/annotations/
+
+# Results (regenerable)
+results/raw/
+results/aggregated/
+results/tables/
+results/figures/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model weights
+*.bin
+*.safetensors
+*.gguf
+
+# Large index files
+*.faiss
+*.index
+*.pkl
+
+# Logs
+*.log
+logs/
+
+# PDF (research paper - too large for git)
+*.pdf

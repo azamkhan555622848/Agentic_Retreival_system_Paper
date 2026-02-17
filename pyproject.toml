@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "agentic-rag-hybrid-retrieval"
+version = "0.1.0"
+description = "Agentic RAG with Hybrid Retrieval: LLM agent dynamically chooses between grep-based and semantic retrieval"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Azam Khan"},
+]
+
+dependencies = [
+    # Agent framework
+    "langgraph>=0.2",
+    "langchain>=0.3",
+    "langchain-openai>=0.2",
+    "langchain-community>=0.3",
+
+    # LLM serving
+    "vllm>=0.6",
+    "torch>=2.4",
+
+    # Retrieval - dense
+    "faiss-gpu>=1.7.4",
+    "sentence-transformers>=3.0",
+    "FlagEmbedding>=1.2",
+
+    # Retrieval - sparse
+    "bm25s>=0.2",
+    "PyStemmer>=2.2",
+
+    # Retrieval - grep
+    "ripgrepy>=2.0",
+
+    # Datasets
+    "datasets>=2.20",
+    "flashrag>=0.2",
+
+    # Evaluation
+    "ragas>=0.2",
+    "ares-ai>=0.5",
+    "bert-score>=0.3.13",
+    "rouge-score>=0.1.2",
+
+    # Config & validation
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "pyyaml>=6.0",
+    "omegaconf>=2.3",
+    "python-dotenv>=1.0",
+
+    # Data & analysis
+    "pandas>=2.0",
+    "numpy>=1.26",
+    "scipy>=1.12",
+
+    # Visualization
+    "matplotlib>=3.8",
+    "seaborn>=0.13",
+
+    # Utilities
+    "tqdm>=4.66",
+    "rich>=13.0",
+    "psutil>=5.9",
+    "gputil>=1.4",
+    "jsonlines>=4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
